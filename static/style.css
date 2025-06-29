@@ -1,0 +1,161 @@
+/* General Body and Retro Theme */
+body {
+    background-color: #0c0c0c; /* Very dark gray, almost black */
+    color: #00ff41; /* Bright green for text */
+    font-family: 'VT323', 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 20px;
+    font-size: 18px; /* Slightly larger base font for readability */
+}
+
+/* Import VT323 font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+header, main, footer {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 15px;
+    border: 2px solid #00ff41; /* Green border */
+    box-shadow: 0 0 15px #00ff41; /* Green glow effect */
+    background-color: #1a1a1a; /* Slightly lighter dark for content areas */
+}
+
+h1, h2 {
+    color: #00ff41; /* Green headings */
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 5px #00ff41;
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between form elements/fieldsets */
+}
+
+fieldset {
+    border: 1px dashed #00cc33; /* Dashed green border for fieldsets */
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+legend {
+    color: #00ff41;
+    padding: 0 10px;
+    font-size: 1.2em;
+    text-transform: uppercase;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #00dd38;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select,
+input[type="file"] {
+    background-color: #050505; /* Even darker background for inputs */
+    color: #00ff41; /* Green text in inputs */
+    border: 1px solid #00cc33;
+    padding: 10px;
+    font-family: inherit; /* Inherit retro font */
+    font-size: 1em;
+    width: calc(100% - 22px); /* Full width minus padding and border */
+    box-sizing: border-box;
+}
+
+input[type="file"] {
+    padding: 5px; /* File inputs are a bit different */
+}
+
+textarea {
+    resize: vertical; /* Allow vertical resize */
+    min-height: 80px;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+    accent-color: #00ff41; /* Style the radio button itself */
+}
+
+button[type="submit"] {
+    background-color: #00ff41; /* Green background */
+    color: #0c0c0c; /* Dark text */
+    border: none;
+    padding: 12px 20px;
+    font-family: inherit;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button[type="submit"]:hover,
+button[type="submit"]:focus {
+    background-color: #00cc33; /* Slightly darker green on hover */
+    color: #000000;
+    box-shadow: 0 0 10px #00ff41;
+}
+button[type="submit"]:disabled {
+    background-color: #555;
+    color: #aaa;
+    cursor: not-allowed;
+}
+
+
+/* ASCII Art Output */
+#ascii_art_output_section {
+    margin-top: 30px;
+    padding: 15px;
+    border: 1px solid #00cc33;
+}
+
+#ascii_art_output {
+    font-family: 'Courier New', Courier, monospace; /* Strict monospace for ASCII */
+    white-space: pre;
+    overflow-x: auto; /* Allow horizontal scrolling for wide art */
+    line-height: 1.0; /* Compact line height for ASCII */
+    font-size: 12px; /* Can be adjusted for density, ensure it's small enough */
+    color: #00ff41; /* Green ASCII art */
+    background-color: #050505;
+    padding: 10px;
+    border: 1px dashed #008020; /* Inner border for the pre block */
+}
+
+/* Error Messages */
+.error {
+    background-color: #330000; /* Dark red background for errors */
+    color: #ff4444; /* Light red text */
+    border: 1px solid #ff0000;
+    padding: 10px;
+    margin-top: 20px;
+    text-align: center;
+}
+.error p {
+    margin: 0;
+}
+
+/* Loading Message */
+.loading {
+    color: #ffff00; /* Yellow for loading */
+    text-align: center;
+    padding: 10px;
+    margin-top: 15px;
+    font-size: 1.1em;
+}
+
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 0.9em;
+    border-top: 1px dashed #00cc33;
+    padding-top: 15px;
+}

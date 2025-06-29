@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII-M-A-T-I-C-5000</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body data-current-input-type="{{ form_input.input_type if form_input else 'text' }}">
+    <header>
+        <h1>ASCII-M-A-T-I-C-5000</h1>
+    </header>
+    <main>
+        <form method="POST" action="{{ url_for('generate_ascii') }}" enctype="multipart/form-data" id="ascii_form">
+            <fieldset>
+                <legend>Input Type</legend>
+                <label>
+                    <input type="radio" name="input_type" value="text" id="input_type_text"> Text
+                </label>
+                <label>
+                    <input type="radio" name="input_type" value="image" id="input_type_image"> Image
+                </label>
+            </fieldset>
+
+            <div id="text_input_group">
+                <label for="text_input_area">Enter Text:</label>
+                <textarea name="text_input" id="text_input_area" rows="5" cols="50">{{ form_input.text_input if form_input else '' }}</textarea>
+            </div>
+
+            <div id="image_upload_group" style="display: none;">
+                <label for="image_upload_input">Upload Image:</label>
+                <input type="file" name="image_upload" id="image_upload_input" accept="image/*">
+            </div>
+
+            <fieldset>
+                <legend>Options</legend>
+                <div>
+                    <label for="width_input">ASCII Width (chars):</label>
+                    <input type="number" name="width" id="width_input" value="{{ form_input.width if form_input else '100' }}" min="10" max="500" required>
+                </div>
+                <div>
+                    <label for="charset_select">Character Set:</label>
+                    <select name="charset" id="charset_select">
+                        {% for charset_name_key in charsets %} {# Assuming charsets is a list of keys from app.py #}
+                            <option value="{{ charset_name_key }}"
+                                    {{ 'selected' if form_input.charset == charset_name_key else ('selected' if not form_input.charset and charset_name_key == default_charset) }}
+                                    >
+                                {{ charset_name_key }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </fieldset>
+
+            <button type="submit">Generate ASCII Art</button>
+        </form>
+
+        <div id="loading_message_container" class="loading" style="display: none;">
+            Generating your ASCII art, please wait...
+        </div>
+
+        {% if error %}
+            <div id="error_message" class="error">
+                <p><strong>Error:</strong> {{ error }}</p>
+            </div>
+        {% endif %}
+
+        {% if ascii_art %}
+            <section id="ascii_art_output_section">
+                <h2>Generated ASCII Art:</h2>
+                <pre id="ascii_art_output">{{ ascii_art }}</pre>
+            </section>
+        {% endif %}
+    </main>
+    <footer>
+        <p>A Retro AI Experiment</p>
+    </footer>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
